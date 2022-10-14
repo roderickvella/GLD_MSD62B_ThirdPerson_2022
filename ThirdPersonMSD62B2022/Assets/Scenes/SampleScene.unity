@@ -1353,6 +1353,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e37c2675122b340d6bb381b5735bf840, type: 2}
   numberOfItems: 5
   itemsSelectionPanel: {fileID: 928209243}
+  currentSelectedIndex: 0
+  selectedColour: {r: 0, g: 1, b: 0.020182133, a: 1}
+  notSelectedColour: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &819366793
 GameObject:
   m_ObjectHideFlags: 0

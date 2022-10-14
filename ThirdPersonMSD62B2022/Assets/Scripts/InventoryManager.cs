@@ -19,6 +19,14 @@ public class InventoryManager : MonoBehaviour
 
     private List<InventoryItem> itemsForPlayer; //the items that the player can use during the game
 
+    public int currentSelectedIndex = 0; //by default start/select the first button (from the left hand side)
+
+    [Tooltip("Selected Item Colour")]
+    public Color selectedColour;
+
+    [Tooltip("Not Selected Item Colour")]
+    public Color notSelectedColour;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +38,35 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.K))
+        {
+            ChangeSelection();
+        }
+    }
+
+    private void ChangeSelection()
+    {
+        if(Input.GetKeyDown(KeyCode.J))
+        {
+            currentSelectedIndex -= 1; //move to the left
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            currentSelectedIndex += 1; //move to the right
+        }
+
+        //check for boundaries
+
+        //left boundary
+        if (currentSelectedIndex < 0)
+            currentSelectedIndex = 0;
+
+        //right boundary
+        if (currentSelectedIndex == itemsForPlayer.Count)
+            currentSelectedIndex = currentSelectedIndex - 1;
+
+        RefreshInventorySystemGUI();
+
     }
 
     public void RefreshInventorySystemGUI()
@@ -47,6 +83,16 @@ public class InventoryManager : MonoBehaviour
 
             //change the quantity text label
             button.transform.Find("Quantity").GetComponent<TextMeshProUGUI>().text = "x" + item.quantity;
+
+            //change the colour to green if we are on the correct button. if not change to white
+            if(buttonId == currentSelectedIndex)
+            {
+                button.GetComponent<Image>().color = selectedColour;
+            }
+            else
+            {
+                button.GetComponent<Image>().color = notSelectedColour;
+            }
 
             //move to the next button
             buttonId += 1;
