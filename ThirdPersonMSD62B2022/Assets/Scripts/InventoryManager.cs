@@ -27,9 +27,15 @@ public class InventoryManager : MonoBehaviour
     [Tooltip("Not Selected Item Colour")]
     public Color notSelectedColour;
 
+    [Tooltip("Show Inventory GUI")]
+    public bool showInventory = false;
+
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
+        animator = itemsSelectionPanel.GetComponent<Animator>();
         itemsForPlayer = new List<InventoryItem>();
         PopulateInventorySystem();
         RefreshInventorySystemGUI();
@@ -42,6 +48,41 @@ public class InventoryManager : MonoBehaviour
         {
             ChangeSelection();
         }
+        else if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ConfirmSelection();
+        }
+    }
+
+    public void ShowToggleInventory()
+    {
+        if (showInventory == false)
+        {
+            showInventory = true;
+            animator.SetTrigger("InventoryIn");
+        }
+        else
+        {
+            showInventory = false;
+            animator.SetTrigger("InventoryOut");
+        }
+    }
+
+    private void ConfirmSelection()
+    {
+        //get the item form the itemsForPlayer using the currentSelectedIndex
+        InventoryItem inventoryItem = itemsForPlayer[currentSelectedIndex];
+        print("Inventory Item Selected:" + inventoryItem.item.name);
+
+        //reduce the quantity
+        inventoryItem.quantity -= 1;
+
+        //check if the quantity is 0. If it is 0, then remove from the itemsForPlayer list
+        if (inventoryItem.quantity == 0)
+            itemsForPlayer.RemoveAt(currentSelectedIndex);
+
+        RefreshInventorySystemGUI();
+
     }
 
     private void ChangeSelection()
