@@ -44,14 +44,14 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.K))
-        {
-            ChangeSelection();
-        }
-        else if (Input.GetKeyDown(KeyCode.Return))
-        {
-            ConfirmSelection();
-        }
+    //    if(Input.GetKeyDown(KeyCode.J) || Input.GetKeyDown(KeyCode.K))
+    //    {
+    //        ChangeSelection();
+    //    }
+    //    else if (Input.GetKeyDown(KeyCode.Return))
+    //    {
+    //        ConfirmSelection();
+    //    }
     }
 
     public void ShowToggleInventory()
@@ -68,33 +68,41 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void ConfirmSelection()
+    public void ConfirmSelection()
     {
-        //get the item form the itemsForPlayer using the currentSelectedIndex
-        InventoryItem inventoryItem = itemsForPlayer[currentSelectedIndex];
-        print("Inventory Item Selected:" + inventoryItem.item.name);
+        if (showInventory)
+        {
+            //get the item form the itemsForPlayer using the currentSelectedIndex
+            InventoryItem inventoryItem = itemsForPlayer[currentSelectedIndex];
+            print("Inventory Item Selected:" + inventoryItem.item.name);
 
-        //reduce the quantity
-        inventoryItem.quantity -= 1;
+            //reduce the quantity
+            inventoryItem.quantity -= 1;
 
-        //check if the quantity is 0. If it is 0, then remove from the itemsForPlayer list
-        if (inventoryItem.quantity == 0)
-            itemsForPlayer.RemoveAt(currentSelectedIndex);
+            //check if the quantity is 0. If it is 0, then remove from the itemsForPlayer list
+            if (inventoryItem.quantity == 0)
+                itemsForPlayer.RemoveAt(currentSelectedIndex);
 
-        RefreshInventorySystemGUI();
+            RefreshInventorySystemGUI();
+        }
+
 
     }
 
-    private void ChangeSelection()
+    public void ChangeSelection(bool moveLeft)
     {
-        if(Input.GetKeyDown(KeyCode.J))
-        {
-            currentSelectedIndex -= 1; //move to the left
-        }
-        else if (Input.GetKeyDown(KeyCode.K))
-        {
-            currentSelectedIndex += 1; //move to the right
-        }
+        if (moveLeft)
+            currentSelectedIndex -= 1;
+        else
+            currentSelectedIndex += 1;
+        //if(Input.GetKeyDown(KeyCode.J))
+        //{
+        //    currentSelectedIndex -= 1; //move to the left
+        //}
+        //else if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    currentSelectedIndex += 1; //move to the right
+        //}
 
         //check for boundaries
 

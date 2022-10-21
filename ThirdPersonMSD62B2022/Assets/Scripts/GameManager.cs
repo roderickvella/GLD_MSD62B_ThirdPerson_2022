@@ -25,10 +25,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            ShowHideInventorySystem();
-        }
+        //if (Input.GetKeyDown(KeyCode.Tab))
+        //{
+        //    ShowHideInventorySystem();
+        //}
     }
 
     public void OnChangeGameState(GameState gameState)
@@ -41,6 +41,41 @@ public class GameManager : MonoBehaviour
     {
         //we call a method inside InventoryManager to toggle the inventory window's animation
         Canvas.GetComponentInChildren<InventoryManager>().ShowToggleInventory();
+    }
+
+    public void OnButtonPressed(string key)
+    {
+        if(gameState == GameState.AreaA)
+        {
+            switch (key)
+            {
+                case "TAB":
+                    Canvas.GetComponentInChildren<InventoryManager>().ShowToggleInventory();
+                    break;
+                case "J":
+                    Canvas.GetComponentInChildren<InventoryManager>().ChangeSelection(true);
+                    break;
+                case "K":
+                    Canvas.GetComponentInChildren<InventoryManager>().ChangeSelection(false);
+                    break;
+                case "RETURN":
+                    Canvas.GetComponentInChildren<InventoryManager>().ConfirmSelection();
+                    break;
+                default:
+                    break;
+            }
+        }
+        else if(gameState == GameState.AreaB)
+        {
+            switch (key)
+            {
+                case "TAB":
+                    print("Hide the coin in Area B");
+                    GameObject coin = GameObject.Find("Plane2/Coin");
+                    if(coin != null) coin.SetActive(false);
+                    break;
+            }
+        }
     }
 
 
