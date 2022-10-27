@@ -78,6 +78,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnMouseButtonPressed(int mouse)
+    {
+        if(gameState == GameState.AreaA)
+        {
+            switch (mouse)
+            {
+                case 0:
+                    GameObject.Find("Player").GetComponent<PlayerManager>().ThrowGrenade();
+                    break;
+            }
+        }
+    }
+
 
     //Area A is the blue zone; Area B is the green zone
     public enum GameState

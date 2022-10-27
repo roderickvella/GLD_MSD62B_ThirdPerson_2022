@@ -2361,6 +2361,7 @@ Transform:
   m_Children:
   - {fileID: 722193444}
   - {fileID: 312572150}
+  - {fileID: 1713408453}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2376,6 +2377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a404346a525d4694866a820019f8a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grenade: {fileID: 2825743065706419026, guid: 5d352ce4a1731114cb14664212312a46, type: 3}
+  grenadeSpawnPosition: {fileID: 1713408453}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,6 +3261,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670216214}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1713408452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1713408453}
+  m_Layer: 0
+  m_Name: GrenadeLauncherPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1713408453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1713408452}
+  m_LocalRotation: {x: -0.15329637, y: -0, z: -0, w: 0.9881803}
+  m_LocalPosition: {x: -0.654, y: 1.779, z: 0.379}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 943431003}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -17.636, y: 0, z: 0}
 --- !u!1 &1778145870
 GameObject:
   m_ObjectHideFlags: 0

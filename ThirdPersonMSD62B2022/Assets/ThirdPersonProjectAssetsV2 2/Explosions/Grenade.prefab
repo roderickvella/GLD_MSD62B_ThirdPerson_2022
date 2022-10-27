@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 2825743065706533065}
   - component: {fileID: 2825743065706533062}
   - component: {fileID: 2825743065706533063}
-  - component: {fileID: 5145508936911045003}
+  - component: {fileID: 7488434463216186873}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -436,7 +436,7 @@ CapsuleCollider:
   m_Height: 0.2
   m_Direction: 1
   m_Center: {x: 0, y: 0.02, z: 0}
---- !u!114 &5145508936911045003
+--- !u!114 &7488434463216186873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2825743065706419026}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 449aefd0a832a7c4aae8096d06361f2e, type: 3}
+  m_Script: {fileID: 11500000, guid: e89e38e4e75054fddbf4d10493c689dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initialForce: 500
